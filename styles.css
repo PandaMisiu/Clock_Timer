@@ -4,7 +4,7 @@ body{
   color: white;
 }
 
-main, .container, .switch-container, .time-container  {
+main, .container, .switch-container, .time-container, .time-container-timer,.hour-wrapper,.minutes-wrapper,.seconds-wrapper  {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,18 @@ main {
   width: 100%;
 }
 
-.time-container {
+.add-time-container {
+  flex:0.5;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.time-container{
+  pointer-events: none;
+}
+
+.time-container, .time-container-timer {
   flex: 2;
   width: 100%;
   column-gap: 10px;
@@ -38,78 +49,123 @@ main {
   width: 100%;
 }
 
+.hour-wrapper,.minutes-wrapper,.seconds-wrapper {
+  flex:1;
+  position: relative;
+}
+
 
 /* --------------------- FORMATING CLOCK -------------------- */
 
-.hour-container, .semicolon, .minutes-container, .seconds-container {
+.time-container {
   font-family:Moirai One, Rajdhani, Arial;
   font-size: 6rem;
   font-weight: 600;
   -webkit-text-stroke: 2px #9400FF;
   color: transparent;
   text-shadow: 0px 0px 15px #9400FF, 10px 5px 15px #2a0047;
+  transition: 0.15s;
+}
+
+.time-container-timer{
+  font-family:Moirai One, Rajdhani, Arial;
+  font-size: 6rem;
+  font-weight: 600;
+  -webkit-text-stroke: 2px #FFF01F;
+  color: transparent;
+  text-shadow: 0px 0px 15px #FFF01F, 10px 5px 15px #2a0047;
+  transition: 0.15s;
 }
 
 
 /* -------------- CLOCK/TIMER CHECKBOX ----------- */
 
 .switch-container {
-  height: 50px;
-  width: 110px;
-  background-color: #222;
-  border-radius: 25px;
-  box-shadow: 
-  0px 8px 60px rgba(0,0,0,0.1) inset,
-  0px 8px 8px rgba(0,0,0,0.1) inset,
-  0px -4px -4px rgba(0,0,0,0.1) inset;
+  width: 80px;
+  height: 40px;
 }
 
-.switch-checkbox input {
+.checkbox {
+  height: 40px;
+  width: 80px;
+  background-color: #303030;
+  border-radius: 25px;
+  box-shadow: 
+  0px 0px 10px rgba(207, 207, 207, 0.2) inset;
+  position: relative;
+}
+
+.checkbox::before {
   position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkmark {
-  /* position: absolute; */
-  height: 50px;
-  width: 110px;
-  background-color: #222;
-  border-radius: 25px;
-  box-shadow: 
-  0px 8px 60px rgba(0,0,0,0.1) inset,
-  0px 8px 8px rgba(0,0,0,0.1) inset,
-  0px -4px -4px rgba(0,0,0,0.1) inset;
-}
-
-.checkmark::after {
   content: "";
-  position: absolute;
   aspect-ratio: 1;
+  height: 32px;
+  background-color: #696969;
+  outline: 2px solid #9400FF;
+  box-shadow: 0 0 5px #9400FF,
+  inset 0 0 5px #9400FF;
   top: 4px;
-  left: 8px;
-  width: 42px;
-  background-color: rgb(122, 122, 122);
-  box-shadow: 0px 5px 3px rgba(56, 56, 56,0.5) inset;
+  left: 5px; 
   border-radius: 50%;
+  transition: 0.2s ease-in-out;
 }
 
-.container input:checked ~ .checkmark::after {
-  animation: moveCheck 0.5s forwards alternate;
+.switch-container input:checked+.checkbox::before{
+  transform: translateX(38px);
+  outline: 2px solid #FFF01F;
+  box-shadow: 0 0 5px #FFF01F,
+  inset 0 0 5px #FFF01F;
 }
 
-.container input:not(:checked) ~ .checkmark::after {
-  animation: moveCheck 0.5s reverse backwards;
+.switch-container input {
+  display: none;
 }
 
-@keyframes moveCheck {
-  from{transform: translateX(0);}
-  to{transform: translateX(50px);}
+
+/* -------- ADD/LOWER BUTTONS --------- */
+
+.hour-container, .minutes-container,.seconds-container {
+  position: relative;
+  transition: 0.2s;
 }
 
-@keyframes moveCheck {
-  from{transform: translateX(0);}
-  to{transform: translateX(50px);}
+.add-hour-btn,.add-minutes-btn, .add-seconds-btn,.rem-hour-btn,.rem-minutes-btn,.rem-seconds-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  aspect-ratio: 1;
+  width: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.add-hour-btn,.add-minutes-btn, .add-seconds-btn{
+  top:-10px;
+}
+
+.rem-hour-btn,.rem-minutes-btn,.rem-seconds-btn {
+  bottom: -20px;
+}
+
+.hour-wrapper:hover button{
+  opacity: 1;
+}
+
+.minutes-wrapper:hover button{
+  opacity: 1;
+}
+
+.seconds-wrapper:hover button{
+  opacity: 1;
+}
+
+.btns-enable {
+  pointer-events: all;
 }

@@ -15,14 +15,34 @@
   <main>
     <div class="container">
       <div class="switch-container">
-        <i class="indicator"></i> 
+        <input type="checkbox" name="" id="check">
+        <label class="checkbox" for="check"></label>
       </div>
+      
       <div class="time-container">
-        <div class="hour-container">00</div>
-        <div class="semicolon"><span>:</span></div>
-        <div class="minutes-container">00</div>
-        <div class="semicolon"><span>:</span></div>
-        <div class="seconds-container">00</div>
+        <div class="hour-wrapper">
+          <div class="hour-container">00</div>
+          <button class="add-hour-btn">+</button>
+          <button class="rem-hour-btn">-</button>
+        </div>
+        
+        
+        <div class="semicolon">:</div>
+        <div class="minutes-wrapper">
+          <div class="minutes-container">00
+          </div>
+          <button class="add-minutes-btn">+</button>
+          <button class="rem-minutes-btn">-</button>
+        </div>
+        
+        <div class="semicolon">:</div>
+        
+        <div class="seconds-wrapper">
+          <div class="seconds-container">00</div>
+          <button class="add-seconds-btn">+</button>
+          <button class="rem-seconds-btn">-</button>
+        </div>
+        
       </div>
       <div class="alarm-container">alarm</div>
     </div>
