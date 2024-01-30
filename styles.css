@@ -1,10 +1,18 @@
-body{
+body {
   background-color: #272727;
   margin: 0;
   color: white;
+  overflow: hidden;
 }
 
-main, .container, .switch-container, .time-container, .time-container-timer,.hour-wrapper,.minutes-wrapper,.seconds-wrapper  {
+main,
+.container,
+.switch-container,
+.time-container,
+.time-container-timer,
+.hour-wrapper,
+.minutes-wrapper,
+.seconds-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,123 +21,141 @@ main, .container, .switch-container, .time-container, .time-container-timer,.hou
 main {
   width: 100vw;
   height: 100vh;
-  
+  flex-direction: column;
+  box-sizing: border-box;
+  user-select: none;
 }
 
 .container {
   width: 50vw;
   height: 40vh;
   flex-direction: column;
+  flex: 3;
+  margin-bottom: 100px;
 }
 
 .switch-container {
-  flex: 1;
   width: 100%;
+  margin-bottom: 15px;
 }
 
-.add-time-container {
-  flex:0.5;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-}
-
-.time-container{
+.time-container {
   pointer-events: none;
 }
 
-.time-container, .time-container-timer {
-  flex: 2;
+.time-container,
+.time-container-timer {
   width: 100%;
   column-gap: 10px;
 }
 
 .alarm-container {
-  flex: 1;
   width: 100%;
 }
 
-.hour-wrapper,.minutes-wrapper,.seconds-wrapper {
-  flex:1;
+.hour-wrapper,
+.minutes-wrapper,
+.seconds-wrapper {
   position: relative;
+  padding: 10px;
 }
-
 
 /* --------------------- FORMATING CLOCK -------------------- */
 
 .time-container {
-  font-family:Moirai One, Rajdhani, Arial;
+  font-family: Rajdhani, Arial;
   font-size: 6rem;
   font-weight: 600;
-  -webkit-text-stroke: 2px #9400FF;
+  -webkit-text-stroke: 2px #9400ff;
   color: transparent;
-  text-shadow: 0px 0px 15px #9400FF, 10px 5px 15px #2a0047;
-  transition: 0.15s;
+  text-shadow: 0px 0px 15px #9400ff, 10px 5px 15px #2a0047;
+  transition: 0.05s;
 }
 
-.time-container-timer{
-  font-family:Moirai One, Rajdhani, Arial;
+.time-container-timer {
+  font-family: Rajdhani, Arial;
   font-size: 6rem;
   font-weight: 600;
-  -webkit-text-stroke: 2px #FFF01F;
+  -webkit-text-stroke: 2px #fff01f;
   color: transparent;
-  text-shadow: 0px 0px 15px #FFF01F, 10px 5px 15px #2a0047;
-  transition: 0.15s;
+  text-shadow: 0px 0px 15px #fff01f, 10px 5px 15px #2a0047;
+  transition: 0.05s;
 }
 
-
-/* -------------- CLOCK/TIMER CHECKBOX ----------- */
+/* -------------- CLOCK/TIMER SWITCH ----------- */
 
 .switch-container {
-  width: 80px;
-  height: 40px;
+  width: 120px;
+  height: 60px;
+  font-family: Rajdhani, Arial;
 }
 
 .checkbox {
-  height: 40px;
-  width: 80px;
+  height: 50px;
+  width: 120px;
   background-color: #303030;
   border-radius: 25px;
-  box-shadow: 
-  0px 0px 10px rgba(207, 207, 207, 0.2) inset;
+  box-shadow: 0px 0px 10px rgba(207, 207, 207, 0.2) inset, 0 0 10px #9400ff;
   position: relative;
+  /* adjusting the text inside checkbox */
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.checkbox-text {
+  font-size: 22px;
+  transform: translateX(58px);
+  transition: 0.2s ease-out;
 }
 
 .checkbox::before {
   position: absolute;
   content: "";
   aspect-ratio: 1;
-  height: 32px;
+  height: 42px;
   background-color: #696969;
-  outline: 2px solid #9400FF;
-  box-shadow: 0 0 5px #9400FF,
-  inset 0 0 5px #9400FF;
+  outline: 2px solid #9400ff;
+  box-shadow: 0 0 5px #9400ff, inset 0 0 5px #9400ff;
   top: 4px;
-  left: 5px; 
+  left: 5px;
   border-radius: 50%;
   transition: 0.2s ease-in-out;
 }
-
-.switch-container input:checked+.checkbox::before{
-  transform: translateX(38px);
-  outline: 2px solid #FFF01F;
-  box-shadow: 0 0 5px #FFF01F,
-  inset 0 0 5px #FFF01F;
+.switch-container input:checked + .checkbox {
+  box-shadow: 0px 0px 10px rgba(207, 207, 207, 0.2) inset, 0 0 10px #fff01f;
 }
 
+.switch-container input:checked + .checkbox::before {
+  transform: translateX(68px);
+  outline: 2px solid #fff01f;
+  box-shadow: 0 0 5px #fff01f, inset 0 0 5px #fff01f;
+}
+
+#check:checked + .checkbox .checkbox-text {
+  transform: translateX(15px);
+}
 .switch-container input {
   display: none;
 }
 
-
 /* -------- ADD/LOWER BUTTONS --------- */
 
-.hour-container, .minutes-container,.seconds-container {
+.hour-container,
+.minutes-container,
+.seconds-container {
   position: relative;
   transition: 0.2s;
 }
 
-.add-hour-btn,.add-minutes-btn, .add-seconds-btn,.rem-hour-btn,.rem-minutes-btn,.rem-seconds-btn {
+.add-hour-btn,
+.add-minutes-btn,
+.add-seconds-btn,
+.rem-hour-btn,
+.rem-minutes-btn,
+.rem-seconds-btn {
   position: absolute;
   background: transparent;
   border: none;
@@ -146,26 +172,253 @@ main {
   transition: 0.2s;
 }
 
-.add-hour-btn,.add-minutes-btn, .add-seconds-btn{
-  top:-10px;
+.add-hour-btn,
+.add-minutes-btn,
+.add-seconds-btn {
+  top: -10px;
 }
 
-.rem-hour-btn,.rem-minutes-btn,.rem-seconds-btn {
-  bottom: -20px;
+.rem-hour-btn,
+.rem-minutes-btn,
+.rem-seconds-btn {
+  bottom: -10px;
 }
 
-.hour-wrapper:hover button{
+.hour-wrapper:hover button {
   opacity: 1;
 }
 
-.minutes-wrapper:hover button{
+.minutes-wrapper:hover button {
   opacity: 1;
 }
 
-.seconds-wrapper:hover button{
+.seconds-wrapper:hover button {
   opacity: 1;
 }
 
 .btns-enable {
   pointer-events: all;
+}
+
+/* ----- START/PAUSE/RESET BUTTONS ----- */
+
+.timer-btns-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 25px;
+  margin-top: 15px;
+  transition: 0.15s;
+}
+
+.timer-btns-container button {
+  color: lightgray;
+  width: 120px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid #fff01f;
+  font-family: Rajdhani, Arial;
+  font-weight: 600;
+  font-size: 26px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px #fff01f, inset 0 0 5px #fff01f;
+  transition: box-shadow 0.15s, color 0.15s;
+  cursor: pointer;
+}
+
+.timer-btns-container button:hover {
+  box-shadow: 0 0 10px #fff01f, inset 0 0 5px #fff01f;
+  color: #fff01f;
+}
+
+.timer-btns-container button:active {
+  background-color: rgb(63, 63, 63);
+  transform: scale(0.98);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.btnExpandAnim {
+  animation: btnExpand 0.3s ease-out;
+}
+
+.slideFromRightAnim {
+  animation: slideFromRight 0.4s ease-out;
+}
+
+@keyframes btnExpand {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ----- ALARM CHECKBOX ----- */
+
+.alarm-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-family: Rajdhani, Arial, Helvetica, sans-serif;
+  width: 70%;
+}
+
+.alarm-checkbox {
+  aspect-ratio: 1;
+  width: 30px;
+  border-radius: 50%;
+  background-color: rgb(74, 74, 74);
+  transition: 0.1s;
+  position: relative;
+  cursor: pointer;
+}
+
+.alarm-checkbox:hover {
+  background-color: rgb(102, 102, 102);
+}
+
+.alarm-checkbox::before {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1;
+  width: 26px;
+  background-color: #fff01f;
+  border-radius: 50%;
+  margin: auto;
+  inset: 0;
+  box-shadow: 0 0 10px #fff01f, inset 0 0 10px #fff01f;
+  opacity: 0;
+  transition: 0.15s;
+}
+
+.alarm-checkbox span {
+  position: absolute;
+  left: 35px;
+  font-size: 24px;
+}
+
+.alarm-container input {
+  display: none;
+}
+
+#alarm:checked + .alarm-checkbox {
+  outline: 1px solid #fff01f;
+}
+
+#alarm:checked + .alarm-checkbox::before {
+  opacity: 1;
+}
+
+/* ------ TITLE ------ */
+
+.title {
+  flex: 1;
+  position: relative;
+  /* TEXT */
+  font-size: 120px;
+  font-weight: 800;
+  font-family: Rajdhani, Arial, Helvetica, sans-serif;
+}
+
+.title-text {
+  color: transparent;
+  text-shadow: 0 5px 60px #9400ff;
+  -webkit-text-stroke: 1px #9400ff;
+  transition: 0.25s;
+}
+.title-text-timer {
+  color: transparent;
+  text-shadow: 0 5px 60px #fff01f;
+  -webkit-text-stroke: 1px #fff01f;
+  transition: 0.25s;
+}
+
+.title-fill,
+.title-fill-timer {
+  position: absolute;
+  transition: 0.3s;
+  z-index: 1;
+  width: 0%;
+  inset: 0;
+  overflow: hidden;
+}
+
+.title-fill {
+  color: #9400ff;
+  text-shadow: 0 5px 60px #9500ff50;
+  -webkit-text-stroke: 1px #9500ff50;
+}
+
+.title-fill-timer {
+  color: #fff01f;
+  text-shadow: 0 5px 60px #fff01f50;
+  -webkit-text-stroke: 1px #fff01f50;
+}
+
+.title:hover .title-fill-timer,
+.title:hover .title-fill {
+  width: 100%;
+}
+
+.title:hover .title-text {
+  text-shadow: 0 5px 10px #9400ff;
+}
+
+.title:hover .title-text-timer {
+  text-shadow: 0 5px 10px #fff01f;
+}
+
+/* ----- PROGRESS BAR ----- */
+
+.progress-bar-container {
+  width: 80%;
+  height: 25px;
+  background: none;
+  border-radius: 15px;
+  margin: 20px 0 20px 0;
+  transition: 0.15s;
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  inset: 0 0 0 0;
+  border-radius: 15px;
+  background: linear-gradient(
+    42deg,
+    rgba(255, 177, 41, 1) 0%,
+    rgba(255, 240, 31, 1) 100%
+  );
+  box-shadow: 0 0 10px #fff01f;
+}
+
+.progressBarExpandAnim {
+  animation: progressBarExpand 0.8s ease-out;
+}
+
+@keyframes progressBarExpand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.fully-hidden {
+  display: none;
 }
