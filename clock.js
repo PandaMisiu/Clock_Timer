@@ -1,7 +1,6 @@
 "use strict";
 
 // TODO:
-// - dodać pasek ile zostało czasu pod timerem
 
 const clock = document.querySelector(".time-container");
 const hour = document.querySelector(".hour-container");
@@ -11,7 +10,7 @@ const switchBtn = document.getElementById("check");
 const switchBtnText = document.querySelector(".checkbox-text");
 
 // TITLE
-const titleText = document.querySelector(".title-text");
+const titleText = document.querySelector(".title-text-content");
 const titleFill = document.querySelector(".title-fill");
 
 // buttons queries
@@ -79,8 +78,6 @@ switchBtn.addEventListener("click", function () {
     titleFill.textContent = "TIMER";
     titleFill.classList.toggle("title-fill");
     titleFill.classList.toggle("title-fill-timer");
-
-    progressBarCont.classList.remove("hidden");
   } else {
     resetMusic();
     clock.classList.remove("time-container-timer");
@@ -105,6 +102,7 @@ switchBtn.addEventListener("click", function () {
     titleFill.classList.toggle("title-fill-timer");
 
     progressBarCont.classList.add("hidden");
+    progressBarCont.classList.remove("opacityAnim");
     progressBar.classList.add("hidden");
     progressBar.classList.remove("progressBarExpandAnim");
     currentProgress = 0;
@@ -257,6 +255,8 @@ startBtn.addEventListener("click", function () {
     progressBarPart = progressBarCont.offsetWidth / setTime;
     progressBar.classList.remove("hidden");
     progressBar.classList.add("progressBarExpandAnim");
+    progressBarCont.classList.remove("hidden");
+    progressBarCont.classList.add("opacityAnim");
     for (let i = 0; i < addLowBtns.length; i++)
       addLowBtns[i].classList.add("fully-hidden");
   }
@@ -287,6 +287,8 @@ resetBtn.addEventListener("click", function () {
   startBtn.textContent = "Start";
   progressBar.classList.add("hidden");
   progressBar.classList.remove("progressBarExpandAnim");
+  progressBarCont.classList.add("hidden");
+  progressBarCont.classList.remove("opacityAnim");
   for (let i = 0; i < addLowBtns.length; i++)
     addLowBtns[i].classList.remove("fully-hidden");
   reset();

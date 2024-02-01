@@ -327,33 +327,40 @@ main {
 
 .title {
   flex: 1;
-  position: relative;
+  height: 30vh;
+  width: 30vw;
   /* TEXT */
-  font-size: 120px;
+  font-size: 8rem;
   font-weight: 800;
   font-family: Rajdhani, Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-text,
+.title-text-timer {
+  color: transparent;
+  transition: 0.25s;
+  position: relative;
 }
 
 .title-text {
-  color: transparent;
   text-shadow: 0 5px 60px #9400ff;
   -webkit-text-stroke: 1px #9400ff;
-  transition: 0.25s;
 }
 .title-text-timer {
-  color: transparent;
   text-shadow: 0 5px 60px #fff01f;
   -webkit-text-stroke: 1px #fff01f;
-  transition: 0.25s;
 }
 
 .title-fill,
 .title-fill-timer {
   position: absolute;
+  inset: 0;
   transition: 0.3s;
   z-index: 1;
   width: 0%;
-  inset: 0;
   overflow: hidden;
 }
 
@@ -386,12 +393,13 @@ main {
 
 .progress-bar-container {
   width: 80%;
-  height: 25px;
+  min-height: 25px;
   background: none;
   border-radius: 15px;
   margin: 20px 0 20px 0;
   transition: 0.15s;
   position: relative;
+  box-shadow: 0 0 10px #fff01f;
 }
 
 .progress-bar {
@@ -403,11 +411,10 @@ main {
     rgba(255, 177, 41, 1) 0%,
     rgba(255, 240, 31, 1) 100%
   );
-  box-shadow: 0 0 10px #fff01f;
 }
 
 .progressBarExpandAnim {
-  animation: progressBarExpand 0.8s ease-out;
+  animation: progressBarExpand 0.5s ease-out;
 }
 
 @keyframes progressBarExpand {
@@ -419,6 +426,61 @@ main {
   }
 }
 
+.opacityAnim {
+  animation: opacityFull 0.8s ease-out;
+}
+
+@keyframes opacityFull {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .fully-hidden {
   display: none;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 5rem;
+  }
+
+  .switch-container {
+    width: 90px;
+    height: 40px;
+  }
+
+  .checkbox {
+    height: 40px;
+    width: 90px;
+  }
+
+  .checkbox-text {
+    font-size: 0px;
+    transform: translateX(58px);
+  }
+
+  .checkbox::before {
+    height: 32px;
+  }
+
+  .switch-container input:checked + .checkbox::before {
+    transform: translateX(48px);
+  }
+
+  .time-container,
+  .time-container-timer {
+    font-size: 5rem;
+    margin-top: 20px;
+  }
+  .timer-btns-container {
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .timer-btns-container button {
+    width: 100%;
+  }
 }
