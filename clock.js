@@ -78,6 +78,8 @@ switchBtn.addEventListener("click", function () {
     titleFill.textContent = "TIMER";
     titleFill.classList.toggle("title-fill");
     titleFill.classList.toggle("title-fill-timer");
+    for (let i = 0; i < addLowBtns.length; i++)
+      addLowBtns[i].classList.remove("fully-hidden");
   } else {
     resetMusic();
     clock.classList.remove("time-container-timer");
@@ -108,7 +110,7 @@ switchBtn.addEventListener("click", function () {
     currentProgress = 0;
 
     for (let i = 0; i < addLowBtns.length; i++)
-      addLowBtns[i].classList.remove("fully-hidden");
+      addLowBtns[i].classList.add("fully-hidden");
 
     updateClock();
   }

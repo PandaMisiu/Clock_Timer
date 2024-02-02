@@ -471,6 +471,10 @@ main {
     transform: translateX(48px);
   }
 
+  .alarm-checkbox {
+    margin-top: 20px;
+  }
+
   .time-container,
   .time-container-timer {
     font-size: 5rem;
@@ -482,5 +486,14 @@ main {
   }
   .timer-btns-container button {
     width: 100%;
+  }
+
+  .add-hour-btn,
+  .add-minutes-btn,
+  .add-seconds-btn,
+  .rem-hour-btn,
+  .rem-minutes-btn,
+  .rem-seconds-btn {
+    opacity: 1;
   }
 }
