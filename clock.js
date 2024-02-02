@@ -58,7 +58,7 @@ setInterval(updateClock, 1000);
 switchBtn.addEventListener("click", function () {
   if (switchBtn.checked) {
     isSwitched = true;
-
+    document.title = "Timer";
     reset();
     updateClock();
     switchBtnText.textContent = "Timer";
@@ -82,6 +82,7 @@ switchBtn.addEventListener("click", function () {
       addLowBtns[i].classList.remove("fully-hidden");
   } else {
     resetMusic();
+    document.title = "Clock";
     clock.classList.remove("time-container-timer");
     clock.classList.add("time-container");
     isSwitched = false;
