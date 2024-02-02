@@ -3,6 +3,7 @@ body {
   margin: 0;
   color: white;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 main,
