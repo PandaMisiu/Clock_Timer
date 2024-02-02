@@ -2,7 +2,7 @@ body {
   background-color: #272727;
   margin: 0;
   color: white;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 main,
@@ -487,6 +487,7 @@ main {
   }
   .timer-btns-container button {
     width: 100%;
+    transform: scale(0.9);
   }
 
   .add-hour-btn,
