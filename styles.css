@@ -336,6 +336,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -1;
 }
 
 .title-text,
@@ -488,6 +489,10 @@ main {
   .timer-btns-container button {
     width: 100%;
     transform: scale(0.9);
+  }
+
+  .timer-btns-container:active button {
+    transform: scale(0.87);
   }
 
   .add-hour-btn,
