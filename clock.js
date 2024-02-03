@@ -1,7 +1,5 @@
 "use strict";
 
-// TODO:
-
 const clock = document.querySelector(".time-container");
 const hour = document.querySelector(".hour-container");
 const minutes = document.querySelector(".minutes-container");
@@ -200,7 +198,7 @@ document
 let isPaused = true; // true - timer paused, false - timer not paused
 
 let setTime;
-let progressBarPart = 0; // how much width for each second
+let progressBarPart = 0; // how much width of progress bar for each second
 let currentProgress = 0;
 
 function updateProgressBar() {
@@ -208,6 +206,7 @@ function updateProgressBar() {
   progressBar.style.right = currentProgress + "px";
 }
 
+// function that manages the timer
 function timer() {
   if (!isPaused) {
     let currentHours = Number(hour.textContent);

@@ -20,16 +20,16 @@ main,
 }
 
 main {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   flex-direction: column;
   box-sizing: border-box;
   user-select: none;
 }
 
 .container {
-  width: 50vw;
-  height: 40vh;
+  width: 50dvw;
+  height: 40dvh;
   flex-direction: column;
   flex: 3;
   margin-bottom: 100px;
