@@ -240,6 +240,7 @@ main {
 
 .hidden {
   opacity: 0;
+  display: none;
 }
 
 .btnExpandAnim {
@@ -502,5 +503,9 @@ main {
   .rem-minutes-btn,
   .rem-seconds-btn {
     opacity: 1;
+  }
+
+  .progress-bar-container {
+    width: 90dvw;
   }
 }

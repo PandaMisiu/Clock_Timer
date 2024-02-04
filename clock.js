@@ -242,6 +242,7 @@ function timer() {
 
 setInterval(timer, 1000);
 
+// START BUTTON
 startBtn.addEventListener("click", function () {
   if (
     hour.textContent === "00" &&
@@ -266,7 +267,7 @@ startBtn.addEventListener("click", function () {
   startBtn.textContent = "Resume";
   isPaused = false;
 });
-
+// PAUSE BUTTON
 pauseBtn.addEventListener("click", function () {
   isPaused = true;
 });
@@ -283,7 +284,9 @@ const resetMusic = function () {
   alarmSound.currentTime = 0;
 };
 
+// RESET BUTTON
 resetBtn.addEventListener("click", function () {
+  alarmCheckbox.checked = false;
   currentProgress = 0;
   progressBar.style.right = 0 + "px";
   startBtn.textContent = "Start";
