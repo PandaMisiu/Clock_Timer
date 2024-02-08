@@ -203,6 +203,7 @@ let currentProgress = 0;
 
 function updateProgressBar() {
   currentProgress += progressBarPart;
+  // console.log(currentProgress);
   progressBar.style.right = currentProgress + "px";
 }
 
@@ -255,11 +256,11 @@ startBtn.addEventListener("click", function () {
       Number(hour.textContent) * 60 * 60 +
       Number(minutes.textContent) * 60 +
       Number(seconds.textContent);
-    progressBarPart = progressBarCont.offsetWidth / setTime;
     progressBar.classList.remove("hidden");
     progressBar.classList.add("progressBarExpandAnim");
     progressBarCont.classList.remove("hidden");
     progressBarCont.classList.add("opacityAnim");
+    progressBarPart = progressBarCont.offsetWidth / setTime;
     for (let i = 0; i < addLowBtns.length; i++)
       addLowBtns[i].classList.add("fully-hidden");
   }
